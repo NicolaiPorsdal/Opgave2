@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import StackNavigator from "./StackNavigator";
+import {LISTE} from './liste'
+import StartSide from './StartSide';
+const Tab = createBottomTabNavigator();
 
-export default function App() {
+//Vores app arbejder herinde og det er her som den får afvide hvad den skal gøre
+//Når der trykkes og navigeres på de forskellige ting
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={({ route }) => ({
+          tabBarActiveTintColor: "black",
+          tabBarStyle: [],
+          tabBarIcon: ({ color, size }) => {
+              return (
+                  <Ionicons
+                      name='md-list-outline'
+                      size={size}
+                      color={color}
+                  />
+              );
+          },
+        })}
+        >
+          <Tab.Screen name="back" component={StackNavigator} />
+        </Tab.Navigator>
+      </NavigationContainer>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+export default App
