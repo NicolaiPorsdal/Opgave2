@@ -10,6 +10,7 @@ const Tab = createBottomTabNavigator();
 //Vores app arbejder herinde og det er her som den får afvide hvad den skal gøre
 //Når der trykkes og navigeres på de forskellige ting
 
+
 function App() {
   return (
   
@@ -35,5 +36,5 @@ function App() {
   );
 }
 
-
 export default App
+
